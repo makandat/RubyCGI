@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title>Cookies</title>
+ <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+ <!-- ヘッダー -->
+ <header>
+  <h1>Cookies</h1>
+  <p style="padding:10px;text-align:center;"><a href="javascript:location='cookies.cgi'">Reset</a> | <a href="index.cgi">Index</a></p>
+ </header>
+
+ <!-- 本文 -->
+ <article>
+   <p>Reset メニューをクリックするとカウントアップする。</p>
+   <p style="margin-left:10%;padding:15px;font-size:larger;">
+    <a href="/cgi-bin/RubyCGI/cookies.cgi?counter=0">カウントをリセットする。</a>&nbsp;|&nbsp;
+    <a href="/cgi-bin/RubyCGI/cookies.cgi">カウントを増やす。</a><br />
+   </p>
+   <p id="result" class="message"><%= message %></p>
+ </article>
+
+ <!-- フッター -->
+ <footer>
+  <p>&nbsp;</p>
+  <p style="text-align:center;"><a href="#top">TOP</a></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+ </footer>
+</body>
+</html>

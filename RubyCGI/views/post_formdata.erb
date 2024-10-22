@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title>POST FormData</title>
+ <link rel="stylesheet" href="/css/style.css" />
+ <style>
+   h1 {
+     text-align: center;
+     color: crimson;
+     padding: 10px;
+   }
+   a:link, a:visited {
+     text-decoration: none;
+     color: firebrick;
+   }
+ </style>
+ <script>
+  async function query() {
+    //headers = {"Content-Type":"multipart-formdata"}
+    body = new FormData(form1)
+    const res = await fetch("/cgi-bin/RubyCGI/post_formdata.cgi", {"method":"POST", body})
+    const val = await res.text()
+    const result = document.getElementById('result')
+    result.innerText = "結果： " + val
+  }
+ </script>
+</head>
+
+<body>
+ <!-- ヘッダー -->
+ <header>
+  <h1>POST FormData</h1>
+  <p style="padding:10px;text-align:center;"><a href="javascript:location='post_formdata.cgi'">Reset</a> | <a href="index.cgi">Index</a></p>
+ </header>
+
+ <!-- 本文 -->
+ <article>
+   <p>cm と inch を相互変換する。</p>
+   <form name="form1">
+    <div><label>長さの値: <input type="text" name="length" style="font-size:11pt;" /></label></div>
+    <fieldset style="margin-top:10px; margin-bottom:20px; width:40%;">
+      <label><input type="radio" name="convert" value="1" checked="checked" /> ｃｍからインチへ</label><br />
+      <label><input type="radio" name="convert" value="2" /> インチからｃｍへ</label>
+    </fieldset>
+    <div style="margin-top:15px"><button type="button" id="button1" onclick="javascript:query()">送信</button></div>
+   </form>
+   <p id="result" class="message"></p>
+ </article>
+
+ <!-- フッター -->
+ <footer>
+  <p>&nbsp;</p>
+  <p style="text-align:center;"><a href="#top">TOP</a></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+ </footer>
+</body>
+</html>

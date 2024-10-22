@@ -1,0 +1,8 @@
+{
+ "platform":"Windows",
+ "sqlite3":"C:/workspace/DB/sqlite3/rubycgi.db",
+ "mysql":{"userid":"user", "password":"ust62kjy", "host":"localhost", "database":"user"},
+ "temp":"C:/temp",
+ "images":"C:/www/html/img",
+ "logfile":"C:/temp/RubyCGI.log"
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title>GET Image</title>
+ <link rel="stylesheet" href="/css/style.css" />
+ <style>
+   h1 {
+     text-align: center;
+     color: crimson;
+     padding: 10px;
+   }
+   a:link, a:visited {
+     text-decoration: none;
+     color: firebrick;
+   }
+   figure {
+     padding:15px;
+   }
+ </style>
+</head>
+
+<body>
+ <!-- ヘッダー -->
+ <header>
+  <h1>GET Image</h1>
+  <p style="padding:10px;text-align:center;"><a href="javascript:location='get_json.cgi'">Reset</a> | <a href="index.cgi">Index</a></p>
+ </header>
+
+ <!-- 本文 -->
+ <article>
+  <section style="display:flex;">
+   <figure><img src="/cgi-bin/RubyCGI/get_image.cgi?path=C:/www/cgi-bin/RubyCGI/img/Alice.jpg"></figure>
+   <figure><img src="/cgi-bin/RubyCGI/get_image.cgi?path=C:/www/cgi-bin/RubyCGI/img/Hestia.jpg"></figure>
+   <figure><img src="/cgi-bin/RubyCGI/get_image.cgi?path=C:/www/cgi-bin/RubyCGI/img/anohana.jpg"></figure>
+  </section>
+ </article>
+
+ <!-- フッター -->
+ <footer>
+  <p>&nbsp;</p>
+  <p style="text-align:center;"><a href="#top">TOP</a></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+ </footer>
+</body>
+</html>

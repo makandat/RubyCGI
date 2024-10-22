@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title><%= title %></title>
+ <link rel="stylesheet" href="/css/style.css" />
+ <style>
+   header {
+     display: flex;
+     margin-left:20%;
+   }
+ </style>
+</head>
+
+<body>
+ <!-- ヘッダー -->
+ <header>
+  <h1><%= title %></h1> <h2 style="text-valign:bottom;"><%= ver %></h2>
+ </header>
+
+ <!-- 本文 -->
+ <article>
+  <section style="margin-top:30px;font-size:larger;">
+   <h4>settings</h4>
+   <pre><%= config %></pre>
+  </section>
+
+  <h4 style="margin-top:30px;">Menu</h4>
+  <section style="font-size:larger;display:flex;">
+   <ul style="width:33%;">
+    <li><a href="get_form.cgi">GET Form</a></li>
+    <li><a href="post_form.cgi">POST Form</a></li>
+    <li><a href="file_upload.cgi">File Upload</a></li>
+    <li><a href="get_text.cgi">GET Text</a></li>
+    <li><a href="get_json.cgi">GET JSON</a></li>
+   </ul>
+   <ul style="width:33%;">
+    <li><a href="get_image.cgi">GET Image</a></li>
+    <li><a href="post_json.cgi">POST JSON</a></li>
+    <li><a href="post_formdata.cgi">POST FormData</a></li>
+    <li><a href="cookies.cgi">Cookies</a></li>
+    <li><a href="error_status.cgi">Error Status</a></li>
+   </ul>
+  </section>
+ </article>
+
+ <!-- フッター -->
+ <footer>
+  <p>&nbsp;</p>
+  <p style="text-align:center;"><a href="#top">TOP</a></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+ </footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title>POST JSON</title>
+ <link rel="stylesheet" href="/css/style.css" />
+ <style>
+ </style>
+ <script>
+  window.onload = ()=>{
+    const button1 = document.getElementById("button1")
+    const result = document.getElementById("result")
+    const path = document.getElementById("path").value.replaceAll("\\", "/")
+    button1.addEventListener("click", async (event) => {
+      const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+      const body = `{"path":"${path}"}`
+      const res = await fetch("/cgi-bin/RubyCGI/post_json.cgi", {"method":"POST", headers, body})
+      const data = await res.json()
+      let s = `ファイルサイズ：${data.size}, 最終更新日：${data.lastwrite}, モード：${data.mode.toString(8)}`
+      result.innerText = "OK: " + s
+    })
+  }
+ </script>
+</head>
+
+<body>
+ <!-- ヘッダー -->
+ <header>
+  <h1>POST JSON</h1>
+  <p style="padding:10px;text-align:center;"><a href="javascript:location='get_json.cgi'">Reset</a> | <a href="index.cgi">Index</a></p>
+ </header>
+
+ <!-- 本文 -->
+ <article>
+  <p>指定したファイルの属性を返す。</p>
+  <form>
+   <div class="form_row"><label>ファイルのパス名：<input type="text" id="path" size="100" /></label></div>
+   <div style="padding:10px"><button type="button" id="button1">送信</button></div>
+  </form>
+  <p id="result" class="message"></p>
+ </article>
+
+ <!-- フッター -->
+ <footer>
+  <p>&nbsp;</p>
+  <p style="text-align:center;"><a href="#top">TOP</a></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+ </footer>
+</body>
+</html>

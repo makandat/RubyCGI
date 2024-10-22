@@ -1,0 +1,3 @@
+# RubyCGI
+ class RubyCGI < CGI
+ 

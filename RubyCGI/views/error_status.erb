@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title>Error Status</title>
+ <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+ <!-- ヘッダー -->
+ <header>
+  <h1>Error Status</h1>
+  <p style="padding:10px;text-align:center;"><a href="javascript:location='error_status.cgi'">Reset</a> | <a href="index.cgi">Index</a></p>
+ </header>
+
+ <!-- 本文 -->
+ <article>
+  <ul>
+   <li><a href="/cgi-bin/RubyCGI/error_status.cgi?error=NOT_FOUND">NOT FOUND</a></li>
+   <li><a href="/cgi-bin/RubyCGI/error_status.cgi?error=SERVER_ERROR">SERVER ERROR</a></li>
+   <li><a href="/cgi-bin/RubyCGI/error_status.cgi?error=BAD_REQUEST">BAD REQUEST</a></li>
+  </ul>
+  <p id="result" class="message"></p>
+ </article>
+
+ <!-- フッター -->
+ <footer>
+  <p>&nbsp;</p>
+  <p style="text-align:center;"><a href="#top">TOP</a></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+ </footer>
+</body>
+</html>

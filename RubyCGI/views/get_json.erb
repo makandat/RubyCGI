@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title>GET JSON</title>
+ <link rel="stylesheet" href="/css/style.css" />
+ <style>
+   h1 {
+     text-align: center;
+     color: crimson;
+     padding: 10px;
+   }
+   a:link, a:visited {
+     text-decoration: none;
+     color: firebrick;
+   }
+ </style>
+ <script>
+  async function query() {
+    const x = document.getElementById('X').value
+    if (x == "") {
+      x = 0
+    }
+    const y = document.getElementById('Y').value
+    if (y == "") {
+      y = 0
+    }
+    const res = await fetch(`/cgi-bin/RubyCGI/get_json.cgi?x=${x}&y=${y}`)
+    const z = await res.json()
+    const result = document.getElementById('result')
+    result.innerText = `絶対値： ${z["abs"]}, 偏角：${z["arg"]}`
+  }
+ </script>
+</head>
+
+<body>
+ <!-- ヘッダー -->
+ <header>
+  <h1>GET JSON</h1>
+  <p style="padding:10px;text-align:center;"><a href="javascript:location='get_json.cgi'">Reset</a> | <a href="index.cgi">Index</a></p>
+ </header>
+
+ <!-- 本文 -->
+ <article>
+   <p>複素数の絶対値、偏角を返す。</p>
+   <form>
+    <div><label>複素数の実部: <input type="text" id="X" style="font-size:11pt;" /></label></div>
+    <div><label>複素数の虚部: <input type="text" id="Y" style="font-size:11pt;" /></label></div>
+    <div style="margin-top:15px"><button type="button" id="button1" onclick="javascript:query()">送信</button></div>
+   </form>
+   <p id="result" class="message"></p>
+ </article>
+
+ <!-- フッター -->
+ <footer>
+  <p>&nbsp;</p>
+  <p style="text-align:center;"><a href="#top">TOP</a></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+ </footer>
+</body>
+</html>
