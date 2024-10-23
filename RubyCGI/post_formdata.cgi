@@ -1,4 +1,4 @@
-#!C:/Program Files/Ruby31-x64/bin/ruby.exe
+#!C:/Ruby33-x64/bin/ruby.exe
 # post_formdata.cgi
 require "./RubyCGI"
 

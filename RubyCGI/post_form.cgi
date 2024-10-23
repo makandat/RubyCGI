@@ -1,21 +1,21 @@
-#!C:/Program Files/Ruby31-x64/bin/ruby.exe
+#!C:/Ruby33-x64/bin/ruby.exe
 # post_form.cgi
 require "./RubyCGI"
 
-# RubyCGI クラスをインスタンス化する。
-rcgi = RubyCGI.new
 
-count = 0
-files = []
-message = ""
+# GET メソッドの場合
+def onGET(cgi)
+  # ERB を HTML に変換する。
+  html = cgi.render("./views/post_form.erb", {"message" => "", "dirname" => "", "files" => []})
+  # HTML をクライアントへ送信する。
+  cgi.send_html(html)
+end
 
-# メソッドの種別による処理
-if rcgi.request_method == "GET"
-  # GET メソッドの時
-  dirname = ""
-else
-  # POST メソッドの時
-  dirname = rcgi.get_param("dirname")
+# POST メソッドの場合
+def onPOST(cgi)
+  count = 0
+  files = []
+  dirname = cgi.get_param("dirname")
   Dir.foreach(dirname) {|file|
     if FileTest.file?(dirname + "/" + file)
       files.push(file)
@@ -23,9 +23,23 @@ else
     end
   }
   message = "ファイル数：#{count}"
+  # ERB を HTML に変換する。
+  html = cgi.render("./views/post_form.erb", {"message" => message, "dirname" => dirname, "files" => files})
+  # HTML をクライアントへ送信する。
+  cgi.send_html(html)
 end
 
-# ERB を HTML に変換する。
-html = rcgi.render("./views/post_form.erb", {"message":message, "dirname":dirname, "files":files})
-# HTML をクライアントへ送信する。
-rcgi.send_html(html)
+
+# RubyCGI クラスのインスタンス化
+rcgi = RubyCGI.new
+#rcgi = RubyCGI.new("./config.json", logging=true)
+#rcgi.log("Start post_json.cgi")
+
+# リクエストメソッドを判別してハンドラをコールする。
+if rcgi.get?(false) or rcgi.get?(true)
+  onGET(rcgi)
+elsif rcgi.post?
+  onPOST(rcgi)
+else
+  rcgi.send_error("METHOD_NOT_ALLOWED", '<html><p style="font-size:larger;color:red;">405 Method Not Allowed</p></html>')
+end

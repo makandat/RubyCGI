@@ -1,4 +1,4 @@
-#!C:/Program Files/Ruby31-x64/bin/ruby.exe
+#!C:/Ruby33-x64/bin/ruby.exe
 # file_upload.cgi
 require "./RubyCGI"
 
@@ -8,7 +8,7 @@ rcgi = RubyCGI.new
 message = ""
 
 # メソッドの種別による処理
-if rcgi.request_method == "POST"
+if rcgi.post?
   # POST メソッドの時、アップロードされたファイルを C:/temp にファイル保存する。
   file = rcgi.save_file("file1", "C:/temp")
   message = "Upload OK: \"#{file.original_filename}\""

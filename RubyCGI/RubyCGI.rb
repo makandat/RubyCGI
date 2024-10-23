@@ -6,7 +6,7 @@ require "logger"
 
 # ERB を利用できる CGI クラス
 class RubyCGI < CGI
-  @@VERSION = "1.0.3"
+  @@VERSION = "1.0.4"
   @@Status = {
     "OK" => "200 OK",
     "PARTIAL_CONTENT" => "206 Partial Content",
@@ -201,6 +201,14 @@ class RubyCGI < CGI
           mime = "image/svg"
         when ".pdf"
           mime = "application/pdf"
+        when ".html"
+          mime = "text/html"
+        when ".xml"
+          mime = "application/xml"
+        when ".mp3"
+          mime = "audio/mpeg"
+        when ".mp4"
+          mime = "video/mp4"
         else
           mime = "text/plain"
       end

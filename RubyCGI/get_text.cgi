@@ -1,9 +1,9 @@
-#!C:/Program Files/Ruby31-x64/bin/ruby.exe
+#!C:/Ruby33-x64/bin/ruby.exe
 # get_text.cgi
 require "./RubyCGI"
 
 rcgi = RubyCGI.new
-if rcgi.query_string == ""
+if rcgi.get?(false)
   html = rcgi.render("./views/get_text.erb")
   rcgi.send_html(html)
 else
