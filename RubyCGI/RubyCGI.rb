@@ -6,7 +6,7 @@ require "logger"
 
 # ERB を利用できる CGI クラス
 class RubyCGI < CGI
-  @@VERSION = "1.0.4"
+  @@VERSION = "1.0.5"
   @@Status = {
     "OK" => "200 OK",
     "PARTIAL_CONTENT" => "206 Partial Content",
@@ -99,9 +99,6 @@ class RubyCGI < CGI
   
   # POST メソッドの body を得る。(content_type が x-www-urlencoded, multipart/form-data でない場合)
   def get_body()
-    if request_method != "POST"
-      return ""
-    end
     body = params.keys[0]
     return body
   end

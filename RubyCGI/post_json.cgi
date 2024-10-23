@@ -6,16 +6,16 @@ require "./RubyCGI"
 def onPOST(cgi)
   data = cgi.get_json()
   path = data["path"]
-  size = 0
-  lastwrite = 0
-  mode = 0
   if FileTest.exist?(path)
     sts = File::Stat.new(path)
     size = sts.size
     lastwrite = sts.mtime.to_s
     mode = sts.mode
+    result = {"size" => size, "lastwrite" => lastwrite, "mode" => mode}
+  else
+    # ファイルが存在しないとき
+    result = {"size" => -1, "lastwrite" => -1, "mode" => -1}
   end
-  result = {"size"=>size, "lastwrite"=>lastwrite, "mode"=>mode}
   cgi.send_json(result)
 end
 

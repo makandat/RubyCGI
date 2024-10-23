@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- post_json.erb v1.0.5 -->
 <html lang="ja">
 <head>
  <meta charset="utf-8" />
@@ -11,8 +12,8 @@
   window.onload = ()=>{
     const button1 = document.getElementById("button1")
     const result = document.getElementById("result")
-    const path = document.getElementById("path").value.replaceAll("\\", "/")
     button1.addEventListener("click", async (event) => {
+      const path = document.getElementById("path").value.replaceAll("\\", "/")
       const headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -31,7 +32,7 @@
  <!-- ヘッダー -->
  <header>
   <h1>POST JSON</h1>
-  <p style="padding:10px;text-align:center;"><a href="javascript:location='get_json.cgi'">Reset</a> | <a href="index.cgi">Index</a></p>
+  <p style="padding:10px;text-align:center;"><a href="javascript:location='post_json.cgi'">Reset</a> | <a href="index.cgi">Index</a></p>
  </header>
 
  <!-- 本文 -->
