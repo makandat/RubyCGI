@@ -9,12 +9,9 @@ end
 
 # パラメータ無しの GET メソッドのリクエストハンドラ
 def onGET_NonQuery(cgi)
-  if cgi.cookies.has_key?("counter")
-    count = cgi.cookies["counter"][0].to_i + 1
-  else
-    count = 0
-  end
+  count = cgi.get_cookie("counter").to_i
   html = cgi.render("./views/cookies.erb", {"message" => "counter = #{count}"})
+  count += 1
   counter = cgi.make_cookie("counter", [count.to_s])
   cgi.send_html(html, status="OK", cookies=[counter.to_s])
 end

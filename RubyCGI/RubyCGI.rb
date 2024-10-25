@@ -6,7 +6,7 @@ require "logger"
 
 # ERB を利用できる CGI クラス
 class RubyCGI < CGI
-  @@VERSION = "1.0.5"
+  @@VERSION = "1.0.6"
   @@Status = {
     "OK" => "200 OK",
     "PARTIAL_CONTENT" => "206 Partial Content",
@@ -95,6 +95,15 @@ class RubyCGI < CGI
       result = false
     end
     return result
+  end
+
+  # クッキーの値を得る。
+  def get_cookie(key, index=0)
+    if cookies.has_key?(key)
+      return cookies[key][index]
+    else
+      return ""
+    end
   end
   
   # POST メソッドの body を得る。(content_type が x-www-urlencoded, multipart/form-data でない場合)

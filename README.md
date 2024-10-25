@@ -1,4 +1,4 @@
-# RubyCGI class v1.0.4
+# RubyCGI class v1.0.6
 
 ## 1 Overviews
 
@@ -53,15 +53,22 @@ As RubyCGI class inherits Ruby's CGI class, you can use Ruby's CGI methods and p
 
 Get the request parameter(s). (Only GET not but POST) if the key does not exists, this method return "".
 
-    * key: The name of the parameter. (The name attribute value of the form)
-    * index: If elements exists with the same name in the form, you can use this parameter.
+* key: The name of the parameter. (The name attribute value of the form)
+* index: If a element which have the same name in the form, you can use this parameter.
 
 **Bool get_check(key, index=0)**
 
 If the parameters is from the checkbox in the form, this method returns the state as BOOL type.
 
-    * key: The name of the parameter. (The name attribute value of the form)
-    * index: If elements exists with the same name in the form, you can use this parameter.
+* key: The name of the parameter. (The name attribute value of the form)
+* index: If elements exists with the same name in the form, you can use this parameter.
+
+**String get_cookie(key, index=0)**
+
+Get the cookie value. If the key does not exists, this method return "".
+
+* key: The name of the cookie.
+* index: If a cookie with multiple values, you can use this parameter to specify them.
 
 **String get_body()**
 
@@ -75,8 +82,8 @@ This method returns the Hash object converted from JSON, if the request method i
 
 This method save the uploaded file to the directory specified by "copy_dir" parameter.
 
-    * key:  Name of the parameter。The form element must be <:input type="file" name="key"> .
-    * copy_dir: The directory to save the uploaded file.
+* key:  Name of the parameter。The form element must be <:input type="file" name="key"> .
+* copy_dir: The directory to save the uploaded file.
 
 **Bool post?()**
 
@@ -94,23 +101,23 @@ This method returns true, if the request method is "GET" else returns false.
 
 This method converts ERB template file to HTML string.
 
-    * path: The path of the template (.erb) file 
-    * embed: The data (Hash type) are embeded to erb file.
+* path: The path of the template (.erb) file 
+* embed: The data (Hash type) are embeded to erb file.
 
 **String render_erb(strerb, embed={})**
 
 This method converts ERB string to HTML string.
 
-    * strerb: The string of ERB.
-    * embed: The data (Hash type) are embeded to erb file.
+* strerb: The string of ERB.
+* embed: The data (Hash type) are embeded to erb file.
 
 **Void send_html(html, status="OK", cookies=[])**
 
 This method responds the HTML to the client.
 
-    * html: HTML string (utf-8)
-    * status: Response status string（ex）"OK"
-    * cookies: Array of the CGI::Cookie object.
+* html: HTML string (utf-8)
+* status: Response status string（ex）"OK"
+* cookies: Array of the CGI::Cookie object.
 
 **Void send_text(text)**
 
@@ -128,23 +135,23 @@ This method responds the JSON which is converted from Ruby's Hash data.
 
 This method respond the file which is specified with "path". 
 
-    * path: the path of the file to be sent to the client.
-    * mime_type: MIME type (ex) "application/json". If this is empty, then this will look up the mime type.
+* path: the path of the file to be sent to the client.
+* mime_type: MIME type (ex) "application/json". If this is empty, then this will look up the mime type.
 
 **CGI::Cookie make_cookie(name, values, options={})**
 
 This method make a CGO::Cookie object with key is "name", value is "values".
 
-    * name: the key of the cookie.
-    * values:  Array of the cookie value. This "value" must be String.
-    * options: Hash of the cookie option.（ex）{"expires" => "..."}
+* name: the key of the cookie.
+* values:  Array of the cookie value. This "value" must be String.
+* options: Hash of the cookie option.（ex）{"expires" => "..."}
 
 **Void send_error(error, html="")**
 
 This method respond the error status.
 
-    * error:  The string of the HTTP error. You can get the string form RubyCGI.Status property.
-    * html: HTML of the error message. If this is empty, set typical English error string.
+* error:  The string of the HTTP error. You can get the string form RubyCGI.Status property.
+* html: HTML of the error message. If this is empty, set typical English error string.
 
 ### 2.4 Other methods
 
